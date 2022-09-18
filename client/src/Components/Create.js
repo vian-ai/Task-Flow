@@ -1,10 +1,16 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { createTask } from '../Redux/actions';
 
 const Create = () => {
     const [text, setText] = useState('');
 
+    const dispatch = useDispatch();
+
     const handleSubmit = (e) => {
         e.preventDefault();
+        
+        dispatch(createTask(text));
         setText('');
     };
 
