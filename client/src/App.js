@@ -6,9 +6,11 @@ import './Styles/App.scss';
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Create />
-      <Tasks />
+      <div className='task-flow'>
+        <Header />
+        <Create />
+        <Tasks />
+      </div>
     </div>
   );
 }

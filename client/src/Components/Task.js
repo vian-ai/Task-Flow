@@ -32,7 +32,7 @@ const Task = ({ task }) => {
                     </span>
                     <div className='edit-form'>
                         <form style={{ display: edit ? 'inline' : 'none' }} onSubmit={handleEditForm} >
-                            <textarea
+                            <input
                                 type='text'
                                 value={text}
                                 onChange={(e) => setText(e.target.value)}
