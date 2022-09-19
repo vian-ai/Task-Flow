@@ -1,5 +1,6 @@
 import Header from './Components/Header';
 import Create from './Components/Create';
+import Tasks from './Components/Tasks';
 import './Styles/App.scss';
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <div className="App">
       <Header />
       <Create />
+      <Tasks />
     </div>
   );
 }
