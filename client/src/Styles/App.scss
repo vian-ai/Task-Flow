@@ -143,20 +143,16 @@
       .edit-form {
         background-color: transparent;
         border-radius: 5px;
-        // height: 40px;
 
         form {
           display: flex;
           flex-direction: row;
 
-          textarea {
+          input {
             background-color: transparent;
             border: none;
             resize: none;
             outline: none !important;
-            width: 95%;
-            // height: 100%;
-            // width: 100%;
             font-size: 16px;
             line-height: 40px;
             color: rgb(0, 0, 0);
