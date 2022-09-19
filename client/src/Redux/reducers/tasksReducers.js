@@ -8,15 +8,14 @@ export const tasksReducers = (state = [], action) => {
             return action.payload
         case actionTypes.toggleTask:
             return state.map(task => (
-                task._id === action.payload._id ? { ...task, done: !task.done } : task
+                task._id === action.payload._id ? { ...task, completed: !task.completed } : task
             ))
         case actionTypes.editTask:
             return state.map(task => (
-                task._id === action.payload._id ? { ...task, data: action.payload.data } : task
+                task._id === action.payload._id ? { ...task, task: action.payload.task } : task
             ))
         case actionTypes.deleteTask:
             return state.filter(task => task._id !== action.payload._id);
-        
         default: 
             return state;
     };

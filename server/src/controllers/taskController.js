@@ -51,11 +51,15 @@ const deleteTask = async (req, res) => {
 const editTask = async (req, res) => {
     try {
         const id = req.params.id;
-        const data = req.body;
+        const data = req.body.task;
 
-        await Task.findByIdAndUpdate(id, {
-            $set: data,
-        }).then((task) => res.status(200).json(task));
+        await Task.findOneAndUpdate(
+            { _id: id },
+            { task: data }
+        );
+
+        const editTask = await Task.findById(id);
+        return res.status(200).json(editTask);
     } catch (error) {
         return res.status(500).json(error.message);
     };

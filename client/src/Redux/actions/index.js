@@ -2,16 +2,16 @@ import { addTask, listTasks, toggleTask, editTask, deleteTask, toggleTab } from'
 import Api from '../../Api';
 import axios from 'axios';
 
-export const createTask = (data) => async (dispatch) => {
+const createTask = (task) => async (dispatch) => {
     try {
-        const res = await axios.post(`${Api}/tasks`, { data });
+        const res = await axios.post(`${Api}/tasks`, { task });
         dispatch({ type: addTask, payload: res.data });
     } catch (error) {
         console.log(error.message);
     };
 };
 
-export const getTasks = () => async (dispatch) => {
+const getTasks = () => async (dispatch) => {
     try {
         const res = await axios.get(`${Api}/tasks`);
         dispatch({ type: listTasks, payload: res.data });
@@ -20,7 +20,7 @@ export const getTasks = () => async (dispatch) => {
     };
 };
 
-export const toggle = (id) => async (dispatch) => {
+const toggle = (id) => async (dispatch) => {
     try {
         const res = await axios.get(`${Api}/tasks/${id}`);
         dispatch({ type: toggleTask, payload: res.data });
@@ -29,24 +29,33 @@ export const toggle = (id) => async (dispatch) => {
     };
 };
 
-export const updateTask = (id, data) => async (dispatch) => {
+const updateTask = (id, task) => async (dispatch) => {
     try {
-        const res = await axios.patch(`${Api}/tasks/${id}`, { data });
+        const res = await axios.patch(`${Api}/tasks/${id}`, { task });
         dispatch({ type: editTask, payload: res.data });
     } catch (error) {
         console.log(error.message);
     };
 };
 
-export const taskDelete = (id) => async (dispatch) => {
+const taskDelete = (id) => async (dispatch) => {
     try {
         const res = await axios.delete(`${Api}/tasks/${id}`);
         dispatch({ type: deleteTask, payload: res.data });
     } catch (error) {
         console.log(error.message);
     };
-}
+};
 
-export const tabToggle = (tab) => async (dispatch) => {
+const tabToggle = (tab) => async (dispatch) => {
     dispatch({ type: toggleTab, selected: tab });
+};
+
+export {
+    createTask,
+    getTasks,
+    toggle,
+    updateTask,
+    taskDelete,
+    tabToggle
 };
