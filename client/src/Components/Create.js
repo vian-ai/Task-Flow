@@ -20,15 +20,17 @@ const Create = () => {
     };
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <textarea
-                    placeholder='Create a task...'
-                    onChange={handleChange}
-                    value={text}
-                />
-                <button><AddIcon /></button>
-            </form>
+        <div id='create-container'>
+            <div className='create-form'>
+                <form onSubmit={handleSubmit}>
+                    <textarea
+                        placeholder='Create a task...'
+                        onChange={handleChange}
+                        value={text}
+                    />
+                    <button><AddIcon style={{ fontSize: '27' }} /></button>
+                </form>
+            </div>
         </div>
     );
 };

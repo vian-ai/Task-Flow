@@ -18,30 +18,32 @@ const Task = ({ task }) => {
     };
 
     return (
-        <div>
+        <div id='task-list'>
             <li
+                className='list'
                 style={{
                     textDecoration: task.completed ? 'line-through' : '',
                     color: task.completed ? '#bdc3c7' : 'black'
                 }}
             >
-                <div>
+                <div className='tasks'>
                     <span onClick={() => dispatch(toggle(task._id))} style={{ display: edit ? 'none' : '' }}>
                         {task.task}
                     </span>
-
-                    <form style={{ display: edit ? 'inline' : 'none' }} onSubmit={handleEditForm} >
-                        <input
-                            type='text'
-                            value={text}
-                            onChange={(e) => setText(e.target.value)}
-                        />
-                    </form>
-                    <div>
-                        <button onClick={() => dispatch(taskDelete(task._id))}>
+                    <div className='edit-form'>
+                        <form style={{ display: edit ? 'inline' : 'none' }} onSubmit={handleEditForm} >
+                            <textarea
+                                type='text'
+                                value={text}
+                                onChange={(e) => setText(e.target.value)}
+                            />
+                        </form>
+                    </div>
+                    <div className='icons'>
+                        <button className='delete-icon' onClick={() => dispatch(taskDelete(task._id))}>
                             <DeleteIcon />
                         </button>
-                        <button onClick={() => setEdit(prevState => !prevState)}>
+                        <button className='edit-icon' onClick={() => setEdit(prevState => !prevState)}>
                             <EditIcon />
                         </button>
                     </div>

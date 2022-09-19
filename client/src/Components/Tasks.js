@@ -35,22 +35,23 @@ export const Tasks = () => {
 
     return (
         <article id='tasks'>
-            <div>
+            <div className='btn-row'>
                 <Tabs currentTab={currentTab} />
 
                 {
                     tasks.some(task => task.completed) ? (
                         <button
                             onClick={removeCompleted}
+                            className='button remove'
                         >
                             Remove Completed
                         </button>
                     ) : null
                 }
             </div>
-            <ul>
+            <ul className='tasks-ul'>
                 {
-                    getAllTasks().map((task) => (
+                    getAllTasks().slice(0).reverse().map((task) => (
                         <Task
                             key={task._id}
                             task={task}
