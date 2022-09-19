@@ -34,7 +34,7 @@ export const Tasks = () => {
     };
 
     return (
-        <article>
+        <article id='tasks'>
             <div>
                 <Tabs currentTab={currentTab} />
 
@@ -42,7 +42,6 @@ export const Tasks = () => {
                     tasks.some(task => task.completed) ? (
                         <button
                             onClick={removeCompleted}
-                            className='clear-btn'
                         >
                             Remove Completed
                         </button>

@@ -18,39 +18,37 @@ const Task = ({ task }) => {
     };
 
     return (
-        <li
-            className='task'
-            style={{
-                textDecoration: task.completed ? 'line-through' : '',
-                color: task.completed ? '#bdc3c7' : 'black'
-            }}
-        >
-            <span
-                onClick={() => dispatch(toggle(task._id))}
-                style={{ display: edit ? 'none' : '' }}>
-                {task.task}
-            </span>
-
-            <form
-                style={{ display: edit ? 'inline' : 'none' }}
-                onSubmit={handleEditForm}
+        <div>
+            <li
+                style={{
+                    textDecoration: task.completed ? 'line-through' : '',
+                    color: task.completed ? '#bdc3c7' : 'black'
+                }}
             >
-                <input
-                    type='text'
-                    value={text}
-                    className='edit-task'
-                    onChange={(e) => setText(e.target.value)}
-                />
-            </form>
+                <div>
+                    <span onClick={() => dispatch(toggle(task._id))} style={{ display: edit ? 'none' : '' }}>
+                        {task.task}
+                    </span>
 
-            <button className='icons' onClick={() => dispatch(taskDelete(task._id))}>
-                <DeleteIcon />
-            </button>
-            <button className='icons' onClick={() => setEdit(prevState => !prevState)}>
-                <EditIcon />
-            </button>
-        </li>
-    )
+                    <form style={{ display: edit ? 'inline' : 'none' }} onSubmit={handleEditForm} >
+                        <input
+                            type='text'
+                            value={text}
+                            onChange={(e) => setText(e.target.value)}
+                        />
+                    </form>
+                    <div>
+                        <button onClick={() => dispatch(taskDelete(task._id))}>
+                            <DeleteIcon />
+                        </button>
+                        <button onClick={() => setEdit(prevState => !prevState)}>
+                            <EditIcon />
+                        </button>
+                    </div>
+                </div>
+            </li>
+        </div>
+    );
 };
 
 export default Task;
